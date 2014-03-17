@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="jsgenphrase-default-wordlist.js"></script>
+    <script type="text/javascript" src="jsgenphrase.js"></script>
+    <style type="text/css">
+body {
+  font-family : Arial;
+  font-size : 80%;
+}
+    </style>
+  </head>
+  <body>
+    <h1>jsgenphrase</h1>
+    <p>
+      JavaScript passphrase generator
+    </p>
+    <p>
+      <label><input type="float" id="bits" value="50.0" /> Entrop bits</label>
+    </p>
+    <p>
+      <label><input type="text" id="separators" value="-_!$&*+=23456789" /> Separators</label>
+    </p>
+    <p>
+      <label><input type="checkbox" id="enableSeparators" checked="checked" /> Enable separators</label>
+    </p>
+    <p>
+      <label><input type="checkbox" id="enableModifiers" checked="checked" /> Enable string modifiers</label>
+    </p>
+    <p>
+      <button id="generate">Generate passphrase</button>
+    </p>
+    <h2>Result</h2>
+    <p id="result">
+    </p>
+    <script type="text/javascript">
+      window.onload = function() {
+        document.getElementById("generate").onclick = function() {
+          var opts = {
+            bits: parseFloat(document.getElementById("bits").value),
+            separators: document.getElementById("separators").value,
+            enableSeparators: document.getElementById("enableSeparators").checked,
+            enableModifiers: document.getElementById("enableModifiers").checked
+          };
+
+          document.getElementById("result").innerHTML = GenPhrase(opts);
+        };
+      };
+    </script>
+  </body>
+</html>
